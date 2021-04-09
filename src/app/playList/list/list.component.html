@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="hero-content " style="text-align: center">
+    <!-- heading -->
+    <h2>PlayList</h2>
+    <hr>
+    <!-- paragraph -->
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search.."
+        [(ngModel)]="playListName"
+      />
+      <span class="input-group-btn ">
+                <button class="btn btn-primary" style="background-color: #000000; border-color: #000000" type="button"
+                        (click)="search()"><i
+                  class="fa fa-search"></i></button>
+      </span>
+    </div>
+  </div>
+  <div class="input-group-btn" style="margin-top: 10px">
+    <button [routerLink]="['/playlist/Create']" class="btn btn-primary"
+            style="background-color: #000000; border-color: #000000"
+            type="button">Create Playlist<i></i></button>
+  </div>
+  <div class="hero-playlist">
+    <div class="row">
+      <div class="col-md-8 offset-md-2  col-sm-6">
+        <!-- play list -->
+        <div class="playlist-content ">
+          <ul class="list-unstyled">
+            <li class="playlist-number" *ngFor="let list of playList">
+              <!-- song information -->
+              <div class="song-info">
+                <!-- song title -->
+                <h4>{{list.name}}</h4>
+              </div>
+              <!-- music icon -->
+              <div class="music-icon pointer">
+                <a class="fa fa-trash-o" (click)=" delete(currentUser.id, list.id); reload()"
+                   style="color: black"></a>
+              </div>
+              <div class="music-icon pointer">
+                <a class="fa fa-play" (click)=" playListSong(list.id)" style="color: black"></a>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

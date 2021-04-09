@@ -1,0 +1,89 @@
+<div class="hero pad">
+  <div class="container">
+    <!-- hero content -->
+    <div class="hero-content ">
+      <!-- heading -->
+      <h2>Music</h2>
+      <hr>
+      <!-- paragraph -->
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search.."
+          [(ngModel)]="name"
+        />
+        <span class="input-group-btn ">
+                <button class="btn btn-primary" style="background-color: #000000; border-color: #000000" type="button"
+                        (click)="search()"><i
+                  class="fa fa-search"></i></button>
+      </span>
+      </div>
+    </div>
+    <!-- hero play list -->
+    <div class="hero-playlist">
+      <div class="row">
+        <div class="col-md-8 offset-md-2 col-sm-6">
+          <!-- play list -->
+          <div class="playlist-content">
+            <ul class="list-unstyled">
+              <li  class="playlist-number" *ngFor="let song of songList">
+                <!-- song information -->
+                <div class="song-info">
+                  <!-- song title -->
+                  <h4>{{song.name}}</h4>
+                  <p><strong>Type</strong>: {{song.category}} &nbsp;|&nbsp; <strong>Single</strong>: {{song.single}}</p>
+                </div>
+                <!-- music icon -->
+                <div class="music-icon">
+                  <a routerLink="/player" class="fa fa-play" (click)="playSong(song.id)" style="color: black"></a>
+                  <a class="pointer" (click)="getPlayList(song.id)" data-toggle="modal"
+                     data-target="#exampleModal" style=""><i class="fa fa-plus" ></i>
+                  </a>
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-centre" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">SELECT A PLAYLIST</h5>
+                        <div class="input-group-btn ">
+                          <button (click)="reLoad()" class="btn btn-primary"
+                                  style="background-color: #000000; border-color: #000000"
+                                  type="button">Create Playlist<i></i></button>
+                        </div>
+                      </div>
+                      <div class="modal-b ody">
+                        <table class="table table-hover">
+                          <tbody>
+                          <tr *ngFor="let list of playList">
+                            <td><strong>{{list.name}}</strong></td>
+                            <td style="text-align: end">
+                              <button style="background-color: white; border-color: #eff0f3" type="button" class="btn btn-secondary"
+                                      (click)="addSongToPlayList(list.id)"><i class="fa fa-plus" style="color: black"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <div>
+                          <div class="alert alert-success" style="text-align: center" *ngIf="isSuccessful">
+                            Successful
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

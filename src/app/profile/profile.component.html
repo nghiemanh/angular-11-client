@@ -1,0 +1,43 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3>
+      <strong>{{ currentUser.username }}</strong> Profile
+    </h3>
+  </header>
+  <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+  <strong>Roles:</strong>
+  <ul>
+    <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li>
+  </ul>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <h1>All The Songs You Had Uploaded</h1>
+      <tbody>
+      <tr *ngFor="let song of songList">
+        <td class="product"><strong>{{song.name}}</strong></td>
+        <td class="price text-right">{{song.plays}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <h1>All The PlayList You Had Created</h1>
+      <tbody>
+      <tr *ngFor="let playList of playList">
+        <td class="product"><strong>{{playList.name}}</strong></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

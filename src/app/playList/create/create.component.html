@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="alert alert-warning" *ngIf="!isLoggedIn">
+    <strong>Warning!</strong> Please Login To Use this Feature.
+  </div>
+  <div class="col-md-6 offset-md-3 mt-5 " *ngIf="isLoggedIn">
+    <h1 class="text-center">Create A PlayList</h1>
+    <form [formGroup]="playlistForm" (ngSubmit)="onSubmit()" accept-charset="UTF-8" method="POST"
+          target="_blank">
+      <div class="form-group">
+        <label>Playlist Name</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter The playlist name"
+               required="required">
+      </div>
+      <hr>
+      <button  style="background-color: #000000; border-color: #000000" type="submit"  class="btn btn-primary">Create</button>
+    </form>
+  </div>
+</div>
